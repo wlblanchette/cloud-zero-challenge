@@ -41,7 +41,10 @@ export default function reducer(state = initialState, action) {
 }
 
 
-
+//------------------------------------
+// promary reducers, process top-level 
+// state
+//------------------------------------
 function toggleModal(state, action) {
   return {
     ...state,
@@ -107,7 +110,11 @@ function fetchFail(state, action) {
   };
 }
 
-// secondary reducer for capturing and counting unique headers
+
+//------------------------------------
+// secondary reducer, for capturing 
+// and counting unique headers
+//------------------------------------
 function processIncomingHeaders(headerState, action) {
   // console.log(_debugHeader, "action", action)
   var new_state = {
@@ -126,7 +133,9 @@ function processIncomingHeaders(headerState, action) {
 }
 
 
-// secondary reducer for timing state
+//------------------------------------
+// secondary reducer, for timing state
+//------------------------------------
 function processTimingState(timingState, action) {
   let timestart = initTimestart(timingState.timestart),
       timeend,
@@ -161,6 +170,13 @@ function processTimingState(timingState, action) {
     timeend: timeend
   }
 }
+
+
+
+
+//------------------------------------
+// helpers
+//------------------------------------
 
 // initializer pattern, pass through if set.
 function initTimestart(timestart) {
