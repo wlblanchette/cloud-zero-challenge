@@ -34,7 +34,6 @@ db_logs/
 server_logs/
 npm-debug.log
 node_modules/
-data
 assets
 public/javascripts/
 public/js/
