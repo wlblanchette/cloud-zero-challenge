@@ -1,48 +1,32 @@
 import { connect } from 'react-redux'
-import { submitName } from '../actions'
-import React from 'react';
-import PropTypes from 'prop-types';
+import SiteListing from './SiteListing'
+import { makeRequest } from '../actions'
 
-var _debugHeader = "[App]:>> ";
+var _debugHeader = "[SiteListing]:>> ";
 
 // passes abstracted dispatch handlers
-// to App as props
+// to SiteListing as props
 const mapDispatchToProps = dispatch => {
   return {
-    onNameClick: newName => dispatch(submitName(newName))
+    dispatchMakeRequest: url => dispatch(makeRequest(url))
   }
 }
 
 // passes abstracted state
-// to App as props
+// to SiteListing as props
 const mapStateToProps = state => {
   console.log(_debugHeader, "state", state)
 
   return {
-    name: state.name
+    sites: state.sites
   }
 }
-
-
-function App({ name, onNameClick }) {
-  return (
-    <div>
-      <h1>Hello, {name}!</h1>
-      <button onClick={onNameClick.bind(null, "jimmothy")}>jimmothy</button>
-      <button onClick={onNameClick.bind(null, "timmothy")}>timmothy</button>
-    </div>
-  );
-};
-
-App.propTypes = {
-  name: PropTypes.string,
-};
 
 
 var StatefulApp = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(SiteListing)
 
 
 export default StatefulApp;

@@ -4,8 +4,8 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // console.log("got data", req.app.get('sites-data'))
-  var page = req.query.page;
   console.log("queries", req.query)
+  var page = req.query.page;
 
   var paginatedData = getPaginatedData(page, req.app.get('sites-data'))
   res.render('index', { 
@@ -18,10 +18,9 @@ module.exports = router;
 
 function getPaginatedData(page = 0, data) {
   var results = [],
-      amountPerPage = 50;
+      amountPerPage = 25;
 
-  results = data.slice((page * amountPerPage), (page + 1 * amountPerPage))
+  results = data.slice((page * amountPerPage), (page * amountPerPage + amountPerPage))
 
   return results;
 }
-

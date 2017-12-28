@@ -1,0 +1,28 @@
+//----------------------------
+// vars
+//----------------------------
+$row-height: 30;
+
+//----------------------------
+// components
+//----------------------------
+@import './site-item';
+@import './site-listing';
+
+
+//----------------------------
+// base styles
+//----------------------------
+.row {
+  display: flex;
+  width: 100%;
+}
+
+body {
+  background-color: #eaeaea;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

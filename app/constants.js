@@ -1,0 +1,23 @@
+const INITIAL = "INITIAL",
+      FETCHING = "FETCHING",
+      RESOLVED = "RESOLVED",
+      ERROR = "ERROR",
+      MAKE_REQUEST = "MAKE_REQUEST",
+      FETCH_SUCCESS = "FETCH_SUCCESS",
+      FETCH_FAIL = "FETCH_FAIL";
+
+export const STATE = {
+  URL: {
+    INITIAL,
+    FETCHING,
+    RESOLVED,
+    ERROR
+  }
+}
+
+export const ACTION_TYPES = {
+  MAKE_REQUEST,
+  FETCHING,
+  FETCH_SUCCESS,
+  FETCH_FAIL
+}

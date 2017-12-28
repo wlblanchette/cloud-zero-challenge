@@ -7,6 +7,8 @@ var watchify = require('watchify');
 var errorify = require('errorify');
 var babelify = require('babelify');
 var streamify = require('gulp-streamify');
+var sass = require("gulp-sass");
+var chalk = require("chalk");
 
 
 //--------------------------------
@@ -24,7 +26,9 @@ var paths = {
   OUT: 'build.js',
   DEST_BUILD: 'public/js/build',
   DEST_SRC: 'public/js/src',
-  ENTRY_POINT: './app/main.js'
+  ENTRY_POINT: './app/main.js',
+  SASS_SRC_GLOB: './app/styles/**/*.scss',
+  SASS_BUILD: 'public/stylesheets/'
 };
 
 function getWatcher() {
@@ -32,7 +36,8 @@ function getWatcher() {
     entries: [paths.ENTRY_POINT],
     transform: [
       ["babelify", {
-        presets: ["es2015", "es2016", "react"]
+        presets: ["es2015", "es2016", "react"],
+        plugins: ["transform-object-rest-spread"]
       }]
     ],
     debug: true,
@@ -46,6 +51,20 @@ function getWatcher() {
   return watcher
 }
 
+function sassBuild(sourceGlob, distDirectory) {
+    return function() {
+        gulp.src(sourceGlob)
+        .pipe(sass())
+        .on("error", customErrorHandler)
+        .pipe(gulp.dest(distDirectory))
+    }
+}
+
+gulp.task('watch-scss', function() {
+  gulp.watch(paths.SASS_SRC_GLOB, ['sass'])
+})
+
+gulp.task('sass', sassBuild(paths.SASS_SRC_GLOB, paths.SASS_BUILD))
 
 // watch
 gulp.task('watch', function() {
@@ -72,7 +91,8 @@ gulp.task('build', function() {
     entries: [paths.ENTRY_POINT],
     transform: [
       ["babelify", {
-        presets: ["es2015", "es2016", "react"]
+        presets: ["es2015", "es2016", "react"],
+        plugins: ["transform-object-rest-spread"]
       }]
     ],
     debug: true
@@ -87,4 +107,22 @@ gulp.task('build', function() {
 
 gulp.task('production', ['build']);
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'watch-scss']);
+
+
+
+//------------------------------------
+function customErrorHandler(error) {
+    var spacers = Array(24).join("_ ");
+
+    console.error( chalk.yellow(spacers) )
+    console.error( chalk.red(">> ") + "Oops... " + chalk.cyan(error.name) + " from gulp watch" +'\n')
+    if(error.loc)       console.error( error.loc )
+    if(error.filename)  console.error('file:' + error.filename)
+    console.error( error.stack );
+    console.error( '\n...this has paused the build, but ' +chalk.bold('gulp watch is still running!') + chalk.green(" :)"))
+    console.error( chalk.yellow(spacers) )
+
+    // console.log(error.filename)
+    this.emit("end");
+}

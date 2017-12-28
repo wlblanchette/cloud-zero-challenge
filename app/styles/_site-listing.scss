@@ -1,0 +1,26 @@
+.site-listing {
+  padding: 18px;
+  background-color: #fff;
+  max-width: 600px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  h1 {
+    text-align: center;
+    margin: 0px 0px 40px 0px;
+  }
+}
+
+.pagination-footer {
+  margin-top: 20px;
+  
+  a {
+    color: black;
+    font-size: 2em;
+  }
+
+  .pagination-footer__forward {
+    margin-left: auto;
+  }
+}

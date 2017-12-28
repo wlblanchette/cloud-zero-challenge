@@ -1,0 +1,43 @@
+.site-item {
+  border-top: 1px solid #dedede;
+  padding: 8px 0px;
+
+  .row {
+    height: $row-height + px;
+
+    * {
+      line-height: $row-height + px;
+    }
+  }
+
+  .site-item__error-msg, .site-item__link {
+    margin-left: auto;
+  }
+
+  i.fa-check-circle {
+    color: green;
+  }
+
+  i.fa-exclamation-triangle {
+    color: red;
+  }
+  i.fa-spinner {    
+    -moz-animation:spin 4s linear infinite;
+    -webkit-animation:spin 4s linear infinite;
+    -webkit-transform: rotate(0deg);
+    animation: spin 1s steps(8) infinite;
+    transform: rotate(0deg);
+  }
+}
+
+
+
+@-moz-keyframes spin { 
+  100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+  100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+  100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } 
+}
