@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import SiteListing from './SiteListing'
-import { makeRequest } from '../actions'
+import { makeRequest, toggleModal } from '../actions'
 
 var _debugHeader = "[App]:>> ";
 
@@ -8,7 +8,8 @@ var _debugHeader = "[App]:>> ";
 // to SiteListing as props
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchMakeRequest: url => dispatch(makeRequest(url))
+    dispatchMakeRequest: url => dispatch(makeRequest(url)),
+    toggleModal: () => dispatch(toggleModal())
   }
 }
 
@@ -18,7 +19,10 @@ const mapStateToProps = state => {
   // console.log(_debugHeader, "state", state)
 
   return {
-    sites: state.sites
+    sites: state.sites,
+    timing: state.timing,
+    headers: state.headerCollection,
+    modalOpen: state.modal.open
   }
 }
 

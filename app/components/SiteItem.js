@@ -21,6 +21,7 @@ class SiteItem extends React.Component {
       case STATE.URL.ERROR:
         console.log(_debugHeader, "*render* sees error on", this.props)
         contents.push(<i key="errorIcon" className="fa fa-exclamation-triangle" aria-hidden="true"></i>)
+        contents.push(<p key="statusCode" className="site-item__status-code">{this.props.statusCode}</p>)
         contents.push(<p key="errorMessage" className="site-item__error-msg">{this.props.errorMessage}</p>)
         break;
       case STATE.URL.FETCHING:
@@ -29,6 +30,7 @@ class SiteItem extends React.Component {
       case STATE.URL.RESOLVED:
         var href = "http://" + this.props.url;
         contents.push(<i key="successIcon" className="fa fa-check-circle" aria-hidden="true"></i>)
+        contents.push(<p key="statusCode" className="site-item__status-code">{this.props.statusCode}</p>)
         contents.push(<a key="link" className="site-item__link" target="__blank" href={href}>{href}</a>)
         break;
       default:

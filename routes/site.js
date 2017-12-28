@@ -33,15 +33,20 @@ function getSiteResponse(siteUrl) {
     request(options, (error, response, body) => {
       if(error) {
         console.log(error)
+        var statusCode = (response ? response.statusCode : null) || 500;
+
+        if(error.code === 'ENOTFOUND') statusCode = 404
+
         resolve({
           error: error,
-          statusCode: 0,
+          statusCode: statusCode,
           success: false,
         })
       } else {
         resolve({
           error: null,
           statusCode: response.statusCode,
+          headers: response.headers,
           success: true,
         })
       }
