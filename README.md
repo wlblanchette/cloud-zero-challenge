@@ -8,3 +8,8 @@ to launch this, do the following:
     c. npm start
     
 This project requires node >= 7.10.0 
+
+after running, the project will be available at port 3000 on your localhost (will crash if anything else is running there)
+
+to start, visit:
+http://localhost:3000/
