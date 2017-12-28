@@ -60,11 +60,10 @@ function sassBuild(sourceGlob, distDirectory) {
     }
 }
 
+
 gulp.task('watch-scss', function() {
   gulp.watch(paths.SASS_SRC_GLOB, ['sass'])
 })
-
-gulp.task('sass', sassBuild(paths.SASS_SRC_GLOB, paths.SASS_BUILD))
 
 // watch
 gulp.task('watch', function() {
@@ -84,9 +83,11 @@ gulp.task('watch', function() {
       .pipe(gulp.dest(paths.DEST_SRC))
 });
 
+// sass build
+gulp.task('sass', sassBuild(paths.SASS_SRC_GLOB, paths.SASS_BUILD))
 
-// build
-gulp.task('build', function() {
+// js build
+gulp.task('js', function() {
   browserify({
     entries: [paths.ENTRY_POINT],
     transform: [
@@ -105,7 +106,7 @@ gulp.task('build', function() {
 });
 
 
-gulp.task('production', ['build']);
+gulp.task('build', ['js', 'sass']);
 
 gulp.task('default', ['watch', 'watch-scss']);
 

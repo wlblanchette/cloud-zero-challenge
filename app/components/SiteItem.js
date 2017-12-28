@@ -1,4 +1,3 @@
-import { makeRequest } from '../actions'
 import { STATE } from '../constants'
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -20,6 +19,7 @@ class SiteItem extends React.Component {
 
     switch(this.props.fetch_state) {
       case STATE.URL.ERROR:
+        console.log(_debugHeader, "*render* sees error on", this.props)
         contents.push(<i key="errorIcon" className="fa fa-exclamation-triangle" aria-hidden="true"></i>)
         contents.push(<p key="errorMessage" className="site-item__error-msg">{this.props.errorMessage}</p>)
         break;
@@ -33,9 +33,6 @@ class SiteItem extends React.Component {
         break;
       default:
         break;
-    }
-    if(this.props.fetch_state === STATE.URL.ERROR) {
-      
     }
 
     return (

@@ -1,6 +1,7 @@
-import { makeRequest } from '../actions';
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// components
 import SiteItem from './SiteItem';
 import PaginationFooter from './PaginationFooter';
 

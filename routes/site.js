@@ -27,7 +27,7 @@ function getSiteResponse(siteUrl) {
       method: 'GET',
       timeout: 7000,
       followRedirect: true,
-      maxRedirects: 10,
+      maxRedirects: 5,
     }
 
     request(options, (error, response, body) => {

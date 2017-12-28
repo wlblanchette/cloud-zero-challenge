@@ -18,7 +18,7 @@ class PaginationFooter extends React.Component {
     // if it isn't the first page, show back button
     if(pageNumber > 0) {
       contents.push(
-        <a className="pagination-footer__back" href={backwardHref}>
+        <a key="backButton" className="pagination-footer__back" href={backwardHref}>
           <i className="fa fa-chevron-circle-left" aria-hidden="true"></i>
         </a>
       )
@@ -26,7 +26,7 @@ class PaginationFooter extends React.Component {
 
     // always show the forward
     contents.push(
-      <a className="pagination-footer__forward" href={forwardHref}>
+      <a key="forwardButton" className="pagination-footer__forward" href={forwardHref}>
         <i className="fa fa-chevron-circle-right" aria-hidden="true"></i>
       </a>
     )
