@@ -20,7 +20,6 @@ class SiteItem extends React.Component {
 
     switch(this.props.fetch_state) {
       case STATE.URL.ERROR:
-        console.log(_debugHeader, "*rendering* error, ", this.props)
         contents.push(<i key="errorIcon" className="fa fa-exclamation-triangle" aria-hidden="true"></i>)
         contents.push(<p key="errorMessage" className="site-item__error-msg">{this.props.errorMessage}</p>)
         break;

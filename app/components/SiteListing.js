@@ -8,20 +8,14 @@ var _debugHeader = "[SiteListing]:>> ";
 
 class SiteListing extends React.Component {
   constructor(props) {
-    console.log(_debugHeader, "props", props)
     super(props);
   }
-  
-  // shouldComponentUpdate() {
-
-  // }
 
   render() {
     var sites = Object.keys(this.props.sites);
-    // console.log(_debugHeader, "*render* sites", sites)
 
     var contents = sites.map(site => {
-      var propSite = this.props.sites[site];
+      let propSite = this.props.sites[site];
 
       let siteIndex = propSite.siteIndex;
       let fetch_state = propSite.fetch_state;

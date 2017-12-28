@@ -14,8 +14,8 @@ const initialState = {
 processPrintedState(initialState.sites)
 
 function reducer(state = initialState, action) {
-  console.log(_debugHeader, "state", state)
-  console.log(_debugHeader, "action", action)
+  // console.log(_debugHeader, "state", state)
+  // console.log(_debugHeader, "action", action)
 
   switch (action.type) {
     case FETCH_SUCCESS:
@@ -33,13 +33,6 @@ export default reducer
 
 
 function startingFetch(state, action) {
-  // var copy = Object.assign({}, state);
-
-  // copy.sites[action.url] = {
-  //   siteIndex: copy.sites[action.url].siteIndex,
-  //   fetch_state: STATE.URL.FETCHING,
-  // }
-
   return {
     sites: {
       ...state.sites,
@@ -52,13 +45,6 @@ function startingFetch(state, action) {
 }
 
 function fetchSuccess(state, action) {
-  // var copy = Object.assign({}, state, {});
-
-  // copy.sites[action.url] = {
-  //   siteIndex: copy.sites[action.url].siteIndex,
-  //   fetch_state: STATE.URL.RESOLVED,
-  // }
-
   return {
     sites: {
       ...state.sites,
@@ -71,14 +57,6 @@ function fetchSuccess(state, action) {
 }
 
 function fetchFail(state, action) {
-  // var copy = Object.assign({}, state);
-
-  // copy.sites[action.url] = {
-  //   siteIndex: copy.sites[action.url].siteIndex,
-  //   fetch_state: STATE.URL.ERROR,
-  //   errorMessage: action.errorMessage
-  // }
-
   return {
     sites: {
       ...state.sites,

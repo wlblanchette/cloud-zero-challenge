@@ -11,7 +11,7 @@ class PaginationFooter extends React.Component {
 
   render() {
     var contents = [];
-    var pageNumber = getPageNumber();
+    var pageNumber = getCurrentPageNumber();
     var forwardHref = "/?page="+(pageNumber + 1);
     var backwardHref = "/?page="+(pageNumber - 1);
 
@@ -45,7 +45,7 @@ class PaginationFooter extends React.Component {
 export default PaginationFooter;
 
 
-function getPageNumber() {
+function getCurrentPageNumber() {
   let query = location.search;
 
   if(query === '') {
@@ -54,7 +54,7 @@ function getPageNumber() {
   query = query.replace(/^\?/, "")
                .split('=');
 
-  console.log(_debugHeader, "query", query)
+  // console.log(_debugHeader, "query", query)
   
   return Number(query[1])
 }
