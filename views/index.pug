@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  script.
+    var SITES_DATA = !{JSON.stringify(sites)};
+  div#react-root
+  script(src="/js/src/build.js")

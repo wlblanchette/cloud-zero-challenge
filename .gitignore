@@ -1,0 +1,46 @@
+
+# Created by https://www.gitignore.io/api/macos
+
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+# Thumbnails
+._*
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+*/sslcert/*
+sslcert/*
+sslcert/
+
+# End of https://www.gitignore.io/api/macos
+
+db_logs/
+server_logs/
+npm-debug.log
+node_modules/
+data
+assets
+public/javascripts/
+public/js/
+public/stylesheets/
+public/map/
+public/sw.js
+public/sw.kickoff.js
+.sass-cache
+
